@@ -12,15 +12,10 @@ import Cookies from 'js-cookie';
 
 function Home() {
   const token = Cookies.get('token');
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
-
   const dispatch = useDispatch();
   const profileData = useSelector((state) => state.profile.data);
   const informationData = useSelector((state) => state.dashboard);
   const transactionData = useSelector((state) => state.transaction);
-  const [showBalance, setShowBalance] = useState(false);
 
   useEffect(() => {
     dispatch(getProfile());
@@ -28,6 +23,12 @@ function Home() {
     dispatch(getServices());
     dispatch(getBalance());
   }, [dispatch]);
+  
+  const [showBalance, setShowBalance] = useState(false);
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <>

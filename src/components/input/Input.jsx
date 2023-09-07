@@ -17,7 +17,7 @@ function Input({
   message,
   show,
   setShow,
-  placeholder
+  placeholder,
 }) {
   return (
     <>
@@ -25,15 +25,15 @@ function Input({
         className={`relative flex flex-col gap-1 mt-5 ${containerClassName}`}
       >
         {label && (
-          <label htmlFor={name} className={`pl-1 ${labelClassName}`}>
+          <label htmlFor={name} className={`pl-1 text-left ${labelClassName}`}>
             {text}
           </label>
         )}
         {icon && (
           <div
-            className={`pointer-events-none absolute top-3.5 left-3.5 ${
-              value ? 'opacity-100' : 'opacity-50'
-            }`}
+            className={`pointer-events-none absolute ${
+              label ? 'top-[42px] left-3.5' : 'top-3.5 left-3.5'
+            }  ${value ? 'opacity-100' : 'opacity-50'}`}
           >
             {icon === 'email' && (
               <MdAlternateEmail
@@ -74,7 +74,9 @@ function Input({
         )}
 
         {isError && (
-          <span className="text-xs text-red-500 text-right pr-1">{message}</span>
+          <span className="text-xs text-red-500 text-right pr-1">
+            {message}
+          </span>
         )}
       </div>
     </>
