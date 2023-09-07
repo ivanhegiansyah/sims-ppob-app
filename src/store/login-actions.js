@@ -3,8 +3,6 @@ import Cookies from 'js-cookie';
 
 export const signIn = (param) => {
   return async (dispatch) => {
-    console.log(param, 'payload');
-
     const sendRequest = async () => {
       const response = await fetch(
         'https://take-home-test-api.nutech-integrasi.app/login',
@@ -19,8 +17,6 @@ export const signIn = (param) => {
       );
 
       const data = await response.json();
-
-      console.log(data, 'response');
 
       return data;
     };

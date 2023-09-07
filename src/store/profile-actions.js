@@ -19,8 +19,6 @@ export const getProfile = () => {
 
       const data = await response.json();
 
-      console.log(data, 'response profile');
-
       return data;
     };
 

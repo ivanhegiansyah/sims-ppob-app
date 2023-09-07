@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 
 export const getBanner = () => {
   return async (dispatch) => {
-
     const fetchData = async () => {
       const response = await fetch(
         'https://take-home-test-api.nutech-integrasi.app/banner',
@@ -12,14 +11,12 @@ export const getBanner = () => {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: 'Bearer '+ Cookies.get('token'),
+            Authorization: 'Bearer ' + Cookies.get('token'),
           },
         }
       );
 
       const data = await response.json();
-
-      console.log(data, 'response banner');
 
       return data;
     };
@@ -41,7 +38,6 @@ export const getBanner = () => {
 
 export const getServices = () => {
   return async (dispatch) => {
-
     const fetchData = async () => {
       const response = await fetch(
         'https://take-home-test-api.nutech-integrasi.app/services',
@@ -50,14 +46,12 @@ export const getServices = () => {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: 'Bearer '+ Cookies.get('token'),
+            Authorization: 'Bearer ' + Cookies.get('token'),
           },
         }
       );
 
       const data = await response.json();
-
-      console.log(data, 'response services');
 
       return data;
     };

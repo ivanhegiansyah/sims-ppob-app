@@ -18,8 +18,6 @@ export const getBalance = () => {
 
       const data = await response.json();
 
-      console.log(data, 'response banner');
-
       return data;
     };
 
@@ -54,8 +52,6 @@ export const getHistory = (offset, limit) => {
       );
 
       const data = await response.json();
-
-      console.log(data, 'response services');
 
       return data;
     };

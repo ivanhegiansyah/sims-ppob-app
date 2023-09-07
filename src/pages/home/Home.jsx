@@ -7,15 +7,20 @@ import { getBalance } from '../../store/transaction-actions';
 import dummyAva from '../../assets/Profile-Photo.png';
 import { convertToRupiah } from '../../service';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
+import { Navigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Home() {
+  const token = Cookies.get('token');
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
   const dispatch = useDispatch();
   const profileData = useSelector((state) => state.profile.data);
   const informationData = useSelector((state) => state.dashboard);
   const transactionData = useSelector((state) => state.transaction);
   const [showBalance, setShowBalance] = useState(false);
-
-  console.log(transactionData, 'servicesData');
 
   useEffect(() => {
     dispatch(getProfile());
@@ -68,7 +73,7 @@ function Home() {
             </div>
           </div>
           <div className="flex space-x-[15px] mt-12 justify-center flex-wrap">
-            {informationData?.dataServices.map((v, i) => {
+            {informationData?.dataServices?.map((v, i) => {
               return (
                 <div
                   key={i}
@@ -83,7 +88,7 @@ function Home() {
           <div className=" mt-12">
             <div className="font-semibold">Temukan promo menarik</div>
             <div className="flex justify-center item-center space-x-10 mt-4">
-              {informationData?.dataBanner.map((v, i) => {
+              {informationData?.dataBanner?.map((v, i) => {
                 return (
                   <div
                     key={i}

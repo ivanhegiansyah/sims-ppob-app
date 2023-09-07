@@ -2,8 +2,6 @@ import { registerActions } from './register-slice';
 
 export const registerAccount = (param) => {
   return async (dispatch) => {
-    console.log(param, 'payload');
-
     const sendRequest = async () => {
       const response = await fetch(
         'https://take-home-test-api.nutech-integrasi.app/registration',
@@ -18,8 +16,6 @@ export const registerAccount = (param) => {
       );
 
       const data = await response.json();
-
-      console.log(data, 'response');
 
       return data;
     };
